@@ -4,65 +4,102 @@ namespace Day_20_AddressBook
 {
     class Program
     {
+        //declaration
+        AddressBook book;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Program"/> class.
+        /// </summary>
+        public Program()
+        {
+            book = new AddressBook();
+        }
+
         /// <summary>
         /// Defines the entry point of the application.
         /// </summary>
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, Welcome to Address Book");
-            Console.WriteLine("Enter the contact details!");
-            AddressBook addressBook = new AddressBook();
-            int choice;
-            do
+            //creation of object
+            Program p = new Program();
+            Console.WriteLine("Hello, Welcome to Address Book!");
+            Console.WriteLine("Select the option. \n1. Add new contact. \n2. Edit existing contact.\n3. Delete Contact \n4. Exit.");
+            int option = int.Parse(Console.ReadLine());
+            switch (option)
             {
-                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Exit Application\n");
-                choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
-                {
-                    case 1:
-                        Console.WriteLine("Enter First Name :");
-                        string firstName = Console.ReadLine();
-                        Console.WriteLine("Enter Last Name :");
-                        string lastName = Console.ReadLine();
-                        Console.WriteLine("Enter Address :");
-                        string address = Console.ReadLine();
-                        Console.WriteLine("Enter City :");
-                        string city = Console.ReadLine();
-                        Console.WriteLine("Enter State :");
-                        string state = Console.ReadLine();
-                        Console.WriteLine("Enter Email :");
-                        string email = Console.ReadLine();
-                        Console.WriteLine("Enter Zip :");
-                        int zip = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Enter Phone Number :");
-                        long phoneNumber = Convert.ToInt64(Console.ReadLine());
-                        addressBook.AddContact(firstName, lastName, address, city, state, email, zip, phoneNumber);
+                case 1:
+                    Console.WriteLine("Enter the person details to be added in the address book");
+                    Console.WriteLine("First Name");
+                    string FirstName = Console.ReadLine();
+                    Console.WriteLine("Last Name");
+                    string LastName = Console.ReadLine();
+                    Console.WriteLine("Address");
+                    string Address = Console.ReadLine();
+                    Console.WriteLine("City");
+                    string City = Console.ReadLine();
+                    Console.WriteLine("State");
+                    string State = Console.ReadLine();
+                    Console.WriteLine("Zip code");
+                    string ZipCode = Console.ReadLine();
+                    Console.WriteLine("Phone Number");
+                    string PhoneNumber = Console.ReadLine();
+                    Console.WriteLine("Email");
+                    string Email = Console.ReadLine();
+                    if (p.book.AddContact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email))
+                    {
+                        Console.WriteLine("Contact added successfully");
                         break;
-                    case 2:
-                        Console.WriteLine("Enter First Name Of Contact To Edit :");
-                        string nameToEdit = Console.ReadLine();
-                        addressBook.EditContact(nameToEdit);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Contact already exists");
                         break;
-                    case 3:
-                        Console.WriteLine("Enter First Name Of Contact To Delete :");
-                        string nameToDelete = Console.ReadLine();
-                        addressBook.DeleteContact(nameToDelete);
+                    }
+                case 2:
+                    Console.WriteLine("Enter the first name of the contact to be edited ");
+                    string name = Console.ReadLine();
+                    Contact c = p.book.FindContact(name);
+                    if (c == null)
+                    {
+                        Console.WriteLine("Address for {0} count not be found.", name);
                         break;
-                    case 4:
-                        Console.WriteLine("Enter First Name Of Contact To View :");
-                        string nameToView = Console.ReadLine();
-                        addressBook.ViewContact(nameToView);
+                    }
+                    else
+                    {
+                        Console.WriteLine("New Last Name");
+                        c.LastName = Console.ReadLine();
+                        Console.WriteLine("New Address");
+                        c.Address = Console.ReadLine();
+                        Console.WriteLine("New City");
+                        c.City = Console.ReadLine();
+                        Console.WriteLine("New State");
+                        c.State = Console.ReadLine();
+                        Console.WriteLine("New Zip code");
+                        c.ZipCode = Console.ReadLine();
+                        Console.WriteLine("New Phone Number");
+                        c.PhoneNumber = Console.ReadLine();
+                        Console.WriteLine("New Email");
+                        c.Email = Console.ReadLine();
+                        Console.WriteLine("Details updated for " + name);
                         break;
-                    case 5:
-                        addressBook.ViewContact();
+                    }
+                case 3:
+                    Console.WriteLine("Enter the first name of the contact to be deleted ");
+                    string name1 = Console.ReadLine();
+                    if (p.book.RemoveContact(name1))
+                    {
+                        Console.WriteLine("Contact removed successfully");
                         break;
-                    case 6:
-                        Console.WriteLine("Thank You For Using Address Book System.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Contact not found");
                         break;
-                }
-            } while (choice != 6);
+                    }
+                case 4:
+                    break;
+            }
         }
     }
 }
-        
