@@ -4,106 +4,53 @@ using System.Text;
 
 namespace Day_20_AddressBook
 {
-    class AddressBook : IContact
+    class AddressBook
     {
-        //creating a dictionary for addressbook 
-        private Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();
+        //creation of list
+        public static List<Contact> People;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddressBook"/> class.
+        /// </summary>
+        public AddressBook()
+        {
+            People = new List<Contact>();
+        }
+
+        /// <summary>
+        /// Finds the contact.
+        /// </summary>
+        /// <param name="fname">The fname.</param>
+        /// <returns></returns>
+        public Contact FindContact(string fname)
+        {
+            Contact contact = People.Find((person) => person.FirstName == fname);
+            return contact;
+        }
 
         /// <summary>
         /// Adds the contact.
         /// </summary>
-        /// <param name="firstName">The first name.</param>
-        /// <param name="lastName">The last name.</param>
-        /// <param name="address">The address.</param>
-        /// <param name="city">The city.</param>
-        /// <param name="state">The state.</param>
-        /// <param name="email">The email.</param>
-        /// <param name="zip">The zip.</param>
-        /// <param name="phoneNumber">The phone number.</param>
-        public void AddContact(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNumber)
+        /// <param name="FirstName">The first name.</param>
+        /// <param name="LastName">The last name.</param>
+        /// <param name="Address">The address.</param>
+        /// <param name="City">The city.</param>
+        /// <param name="State">The state.</param>
+        /// <param name="ZipCode">The zip code.</param>
+        /// <param name="PhoneNumber">The phone number.</param>
+        /// <param name="Email">The email.</param>
+        /// <returns></returns>
+        public bool AddContact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)
         {
-            Contact contact = new Contact();
-            contact.FirstName = firstName;
-            contact.LastName = lastName;
-            contact.Address = address;
-            contact.City = city;
-            contact.State = state;
-            contact.Email = email;
-            contact.Zip = zip;
-            contact.PhoneNumber = phoneNumber;
-            addressBook.Add(contact.FirstName, contact);
-        }
-
-        /// <summary>
-        /// Views the contact.
-        /// </summary>
-        //method to display contact
-        public void ViewContact()
-        {
-            foreach (KeyValuePair<string, Contact> item in addressBook)
+            Contact contact = new Contact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email);
+            Contact result = FindContact(FirstName);
+            if (result == null)
             {
-                Console.WriteLine("First Name : " + item.Value.FirstName);
-                Console.WriteLine("Last Name : " + item.Value.LastName);
-                Console.WriteLine("Address : " + item.Value.Address);
-                Console.WriteLine("City : " + item.Value.City);
-                Console.WriteLine("State : " + item.Value.State);
-                Console.WriteLine("Email : " + item.Value.Email);
-                Console.WriteLine("Zip : " + item.Value.Zip);
-                Console.WriteLine("Phone Number : " + item.Value.PhoneNumber + "\n");
+                People.Add(contact);
+                return true;
             }
-        }
-
-        /// <summary>
-        /// Edits the contact.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        public void EditContact(string name)
-        {
-            foreach (KeyValuePair<string, Contact> item in addressBook)
-            {
-                if (item.Key.Equals(name))
-                {
-                    Console.WriteLine("What do you want to edit ?? \n1.First Name \n2.Last Name \n3.Address \n4.City \n5.State \n6.Email \n7.Zip \n8.Phone Number");
-                    int choice = Convert.ToInt32(Console.ReadLine());
-                    switch (choice)
-                    {
-                        case 1:
-                            Console.WriteLine("Enter New First Name :");
-                            item.Value.FirstName = Console.ReadLine();
-                            break;
-                        case 2:
-                            Console.WriteLine("Enter New Last Name :");
-                            item.Value.LastName = Console.ReadLine();
-                            break;
-                        case 3:
-                            Console.WriteLine("Enter New Address :");
-                            item.Value.Address = Console.ReadLine();
-                            break;
-                        case 4:
-                            Console.WriteLine("Enter New City :");
-                            item.Value.City = Console.ReadLine();
-                            break;
-                        case 5:
-                            Console.WriteLine("Enter New State :");
-                            item.Value.State = Console.ReadLine();
-                            break;
-                        case 6:
-                            Console.WriteLine("Enter New Email :");
-                            item.Value.Email = Console.ReadLine();
-                            break;
-                        case 7:
-                            Console.WriteLine("Enter New Zip :");
-                            item.Value.Zip = Convert.ToInt32(Console.ReadLine());
-                            break;
-                        case 8:
-                            Console.WriteLine("Enter New Phone Number :");
-                            item.Value.PhoneNumber = Convert.ToInt64(Console.ReadLine());
-                            break;
-                    }
-                }
-            }
+            else
+                return false;
         }
     }
 }
-
-
