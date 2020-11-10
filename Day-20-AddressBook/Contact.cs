@@ -45,6 +45,23 @@ namespace Day_20_AddressBook
         /// The state.
         /// </value>
         public string State { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zip code.
+        /// </summary>
+        /// <value>
+        /// The zip code.
+        /// </value>
+        public string ZipCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the phone number.
+        /// </summary>
+        /// <value>
+        /// The phone number.
+        /// </value>
+        public string PhoneNumber { get; set; }
+
         /// <summary>
         /// Gets or sets the email.
         /// </summary>
@@ -54,19 +71,26 @@ namespace Day_20_AddressBook
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or sets the zip.
+        /// Initializes a new instance of the <see cref="Contact"/> class.
         /// </summary>
-        /// <value>
-        /// The zip.
-        /// </value>
-        public int Zip { get; set; }
-
-        /// <summary>
-        /// Gets or sets the phone number.
-        /// </summary>
-        /// <value>
-        /// The phone number.
-        /// </value>
-        public long PhoneNumber { get; set; }
+        /// <param name="FirstName">The first name.</param>
+        /// <param name="LastName">The last name.</param>
+        /// <param name="Address">The address.</param>
+        /// <param name="City">The city.</param>
+        /// <param name="State">The state.</param>
+        /// <param name="ZipCode">The zip code.</param>
+        /// <param name="PhoneNumber">The phone number.</param>
+        /// <param name="Email">The email.</param>
+        public Contact(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNumber, string Email)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Address = Address;
+            this.City = City;
+            this.State = State;
+            this.ZipCode = ZipCode;
+            this.PhoneNumber = PhoneNumber;
+            this.Email = Email;
+        }
     }
 }
