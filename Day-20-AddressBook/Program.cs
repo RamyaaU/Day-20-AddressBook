@@ -24,11 +24,7 @@ namespace Day_20_AddressBook
             //creation of object
             Program p = new Program();
             Console.WriteLine("Hello, Welcome to Address Book!");
-            //using loop as variant
-            bool loop = true;
-            while (loop)
-            {
-                Console.WriteLine("Select the option. \n1. Add new contact. \n2. Edit existing contact. \n3. Exit.");
+            Console.WriteLine("Select the option. \n1. Add new contact. \n2. Edit existing contact. \n3. Exit.");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
                 {
@@ -60,39 +56,7 @@ namespace Day_20_AddressBook
                             Console.WriteLine("Contact already exists");
                             break;
                         }
-                    case 2:
-                        Console.WriteLine("Enter the first name of the contact to be edited ");
-                        string name = Console.ReadLine();
-                        Contact c = p.book.FindContact(name);
-                        if (c == null)
-                        {
-                            Console.WriteLine("Address for {0} count not be found.", name);
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("New Last Name");
-                            c.LastName = Console.ReadLine();
-                            Console.WriteLine("New Address");
-                            c.Address = Console.ReadLine();
-                            Console.WriteLine("New City");
-                            c.City = Console.ReadLine();
-                            Console.WriteLine("New State");
-                            c.State = Console.ReadLine();
-                            Console.WriteLine("New Zip code");
-                            c.ZipCode = Console.ReadLine();
-                            Console.WriteLine("New Phone Number");
-                            c.PhoneNumber = Console.ReadLine();
-                            Console.WriteLine("New Email");
-                            c.Email = Console.ReadLine();
-                            Console.WriteLine("Details updated for " + name);
-                            break;
-                        }
-                    case 3:
-                        loop = false;
-                        break;
                 }
             }
         }
     }
-}
