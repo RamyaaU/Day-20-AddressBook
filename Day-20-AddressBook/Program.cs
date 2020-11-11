@@ -23,7 +23,9 @@ namespace Day_20_AddressBook
         {
             //creation of object
             Program p = new Program();
+            //welcome message
             Console.WriteLine("Hello, Welcome to Address Book!");
+            //main menu
             Console.WriteLine("Select the option. \n1. Add new contact. \n2. Edit existing contact.\n3. Delete Contact \n4. Exit.");
             int option = int.Parse(Console.ReadLine());
             switch (option)
