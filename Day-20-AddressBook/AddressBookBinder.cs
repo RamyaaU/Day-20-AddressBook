@@ -6,10 +6,11 @@ namespace Day_20_AddressBook
 {
     class AddressBookBinder
     {
+        //creates a dictionary to store binder class details
         public Dictionary<string, HashSet<Contact>> Binder = new Dictionary<string, HashSet<Contact>>();
         //creates a list 
         public List<Contact> City = new List<Contact>();
-        //create a dictionary
+        //create a dictionary to store details of city
         public Dictionary<string, List<Contact>> CityDictionary = new Dictionary<string, List<Contact>>();
 
         /// <summary>
@@ -40,10 +41,12 @@ namespace Day_20_AddressBook
         /// <returns></returns>
         public List<Contact> SortByCity(string cityname)
         {
+            //traversing in binder class
             foreach (var key in Binder.Keys)
             {
+                //traversing for a contact by creating an object c 
                 foreach (Contact c in Binder[key])
-                {
+                { 
                     if (c.City == cityname)
                         City.Add(c);
                 }

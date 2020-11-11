@@ -9,10 +9,10 @@ namespace Day_20_AddressBook
         /// </summary>
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, Welcome to Address Book");
+        { 
             //reference for binder class
             AddressBookBinder binder = new AddressBookBinder();
+            //welcome message
             int result = 1;
             while (result == 1)
             {
@@ -105,9 +105,11 @@ namespace Day_20_AddressBook
                 Console.WriteLine("Do you want to enter an address book. \n1. yes \n2. no");
                 result = int.Parse(Console.ReadLine());
             }
+            //traversing through binder class
             foreach (var key in binder.Binder.Keys)
             {
                 Console.WriteLine(key);
+                //traversing in the binder class to search contact
                 foreach (Contact c in binder.Binder[key])
                 {
                     Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
@@ -116,4 +118,3 @@ namespace Day_20_AddressBook
         }
     }
 }
-      
