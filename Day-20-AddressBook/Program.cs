@@ -23,11 +23,13 @@ namespace Day_20_AddressBook
         {
             //creation of object
             Program p = new Program();
+            //welcome message
             Console.WriteLine("Hello, Welcome to Address Book!");
             //using loop as variant
             bool loop = true;
             while (loop)
             {
+                //main menu
                 Console.WriteLine("Select the option. \n1. Add new contact. \n2. Edit existing contact. \n3. Exit.");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
@@ -50,6 +52,7 @@ namespace Day_20_AddressBook
                         string PhoneNumber = Console.ReadLine();
                         Console.WriteLine("Email");
                         string Email = Console.ReadLine();
+                        //calling addcontact function
                         if (p.book.AddContact(FirstName, LastName, Address, City, State, ZipCode, PhoneNumber, Email))
                         {
                             Console.WriteLine("Contact added successfully");
