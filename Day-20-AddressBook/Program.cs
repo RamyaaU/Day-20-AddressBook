@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Day_20_AddressBook
 {
     class Program
     {
+        //createsa list 
         public static List<Contact> data1 = new List<Contact>();
+
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
+            //reference for addressbook binder
             AddressBookBinder binder = new AddressBookBinder();
-            Console.WriteLine("Welcome to Address Book Program");
+            Console.WriteLine("Hello, Welcome to Address Book");
             int result = 1;
             while (result == 1)
             {
@@ -137,7 +145,7 @@ namespace Day_20_AddressBook
                     data1.Add(c);
                 }
             }
-            Console.WriteLine("Writing contacts in file");
+            Console.WriteLine("Writing contacts in file : ");
             ReadWrite.WriteUsingStreamWriter(data1);
             ReadWrite.ReadFromStreamReader();
             ReadWrite.ImplementCSVDataHandling();
@@ -145,4 +153,3 @@ namespace Day_20_AddressBook
         }
     }
 }
-

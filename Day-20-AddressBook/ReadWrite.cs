@@ -10,6 +10,10 @@ namespace Day_20_AddressBook
 {
     class ReadWrite
     {
+        /// <summary>
+        /// Reads from stream reader.
+        /// </summary>
+        //reading a text file
         public static void ReadFromStreamReader()
         {
             string path = @"C:\Users\admin\source\repos\Day-20-AddressBook\Day-20-AddressBook\Utility\Contacts.txt";
@@ -17,7 +21,7 @@ namespace Day_20_AddressBook
             {
                 using (StreamReader sr = File.OpenText(path))
                 {
-                    String fileData = "";
+                    String fileData = " ";
                     while ((fileData = sr.ReadLine()) != null)
                         Console.WriteLine((fileData));
                 }
@@ -28,6 +32,12 @@ namespace Day_20_AddressBook
                 Console.WriteLine("No file");
             }
         }
+
+        /// <summary>
+        /// Writes the using stream writer.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        //writing to a text file
         public static void WriteUsingStreamWriter(List<Contact> data)
         {
             string path = @"C:\Users\admin\source\repos\Day-20-AddressBook\Day-20-AddressBook\Utility\Contacts.txt";
@@ -48,9 +58,14 @@ namespace Day_20_AddressBook
                 Console.WriteLine("No file");
             }
         }
+
+        /// <summary>
+        /// Implements the CSV data handling.
+        /// </summary>
+        //reading a csv file
         public static void ImplementCSVDataHandling()
         {
-            string filePath = @"C:\Users\admin\source\repos\Day-20-AddressBook\Day-20-AddressBook\Utility\Contacts.txt";
+            string filePath = @"C:\Users\admin\source\repos\Day-20-AddressBook\Day-20-AddressBook\Utility\Contact.csv";
             using (var reader = new StreamReader(filePath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
@@ -70,9 +85,15 @@ namespace Day_20_AddressBook
                 }
             }
         }
+
+        /// <summary>
+        /// Writes the CSV file.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        //writing a csv file
         public static void WriteCSVFile(List<Contact> data)
         {
-            string filePath = @"C:\Users\admin\source\repos\Day-20-AddressBook\Day-20-AddressBook\Utility\Contacts.txt";
+            string filePath = @"C:\Users\admin\source\repos\Day-20-AddressBook\Day-20-AddressBook\Utility\Contact.csv";
             using (var writer = new StreamWriter(filePath))
             using (var csvWrite = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
