@@ -137,16 +137,20 @@ namespace Day_20_AddressBook
                 Console.WriteLine("Do you want to enter an address book. \n1. yes \n2. no");
                 result = int.Parse(Console.ReadLine());
             }
+            //traversing through binder class
             foreach (var key in binder.Binder.Keys)
             {
                 data.Add(key);
+                //traversing ithrough contact class
                 foreach (Contact c in binder.Binder[key])
                 {
                     data.Add(c.ToString());
                 }
             }
             Console.WriteLine("Writing contacts in file");
+            //writes using stream writer
             ReadWrite.WriteUsingStreamWriter(data);
+            //reads from stream reader
             ReadWrite.ReadFromStreamReader();
         }
     }
