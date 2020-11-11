@@ -38,7 +38,9 @@ namespace Day_20_AddressBook
         /// <returns></returns>
         public List<string> DistinctCities()
         {
+            //creating a list
             List<string> City = new List<string>();
+            //traversing 
             foreach (var key in Binder.Keys)
             {
                 foreach (Contact c in Binder[key])
@@ -57,18 +59,29 @@ namespace Day_20_AddressBook
         /// </summary>
         public void CreateDictionary()
         {
+            //creates a list
             List<string> City1 = DistinctCities();
+            //traverse through city
             foreach (string city in City1)
             {
+                //creates a list
                 List<Contact> CityContact = new List<Contact>();
                 foreach (var key in Binder.Keys)
                 {
+                    //traverse through contact in binder
+                    //if city matches
+                    //then that city will be added
                     foreach (Contact c in Binder[key])
                     {
                         if (c.City == city)
                             CityContact.Add(c);
                     }
                 }
+                //determines whether dictionary contains specified key value
+                //returns true if that dictionary key value matches with the specified key
+                //and adds that contact
+                //In else part if that key value is not found
+                //then the keyvalue will be added i.e the city is added to dictionary
                 if (this.CityDictionary.ContainsKey(city))
                     CityDictionary[city] = CityContact;
                 else
