@@ -17,6 +17,7 @@ namespace Day_20_AddressBook
         /// <returns></returns>
         public List<Contact> AddAddrBook(string key, List<Contact> list)
         {
+            //checks whether key is present in binder class
             if (this.Binder.ContainsKey(key))
             {
                 Console.WriteLine("Address book already exists");

@@ -12,13 +12,17 @@ namespace Day_20_AddressBook
         {
             //reference for binder class
             AddressBookBinder binder = new AddressBookBinder();
+            //welcome message
             Console.WriteLine("Hello , Welcome to Address Book Program");
+            //initialization
             int result = 1;
             while (result == 1)
             {
                 Console.WriteLine("Enter the name of the Address Book to be used");
                 string addrName = Console.ReadLine();
+                //reference for obejct of addressbook class
                 AddressBook book = new AddressBook();
+                //calls add address book function
                 book.People = binder.AddAddrBook(addrName, book.People);
                 int loop = 1;
                 while (loop == 1)
@@ -105,9 +109,11 @@ namespace Day_20_AddressBook
                 Console.WriteLine("Do you want to enter an address book. \n1. yes \n2. no");
                 result = int.Parse(Console.ReadLine());
             }
+            //traversing through binder class
             foreach (var key in binder.Binder.Keys)
             {
                 Console.WriteLine(key);
+                //traversing in the binder class to search contact
                 foreach (Contact c in binder.Binder[key])
                 {
                     Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);
