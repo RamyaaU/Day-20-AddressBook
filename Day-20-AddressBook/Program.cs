@@ -133,9 +133,11 @@ namespace Day_20_AddressBook
                 Console.WriteLine("Do you want to enter an address book. \n1. yes \n2. no");
                 result = int.Parse(Console.ReadLine());
             }
+            //traversing through binder class
             foreach (var key in binder.Binder.Keys)
             {
                 Console.WriteLine(key);
+                //traversing in the binder class to search contact
                 foreach (Contact c in binder.Binder[key])
                 {
                     Console.WriteLine(c.FirstName + "\t" + c.LastName + "\t" + c.Address + "\t" + c.City + "\t" + c.State + "\t" + c.ZipCode + "\t" + c.PhoneNumber + "\t" + c.Email);

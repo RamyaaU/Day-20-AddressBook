@@ -92,5 +92,16 @@ namespace Day_20_AddressBook
             this.PhoneNumber = PhoneNumber;
             this.Email = Email;
         }
+
+        /// <summary>
+        /// Converts to string.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return FirstName + "\t" + LastName + "\t" + Address + "\t" + City + "\t" + State + "\t" + ZipCode + "\t" + PhoneNumber + "\t" + Email;
+        }
     }
 }
