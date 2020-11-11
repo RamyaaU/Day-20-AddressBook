@@ -23,6 +23,7 @@ namespace Day_20_AddressBook
         {
             //creation of object
             Program p = new Program();
+            //welcome message
             Console.WriteLine("Hello, Welcome to Address Book!");
             bool loop = true;
             while (loop)
